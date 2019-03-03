@@ -1,0 +1,13 @@
+<div id="container">
+  <div cdkDropList id="list1" [cdkDropListConnectedTo]="['list2']">
+    <div cdkDrag *ngFor="let d of data1">
+      {{ d }}
+    </div>
+  </div>
+
+  <div cdkDropList id="list2" [cdkDropListConnectedTo]="['list1']" (cdkDropListDropped)="addToData2($event)">
+    <div cdkDrag *ngFor="let d of data2">
+      {{ d }}
+    </div>
+  </div>
+</div>
