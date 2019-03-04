@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,30 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 })
 export class AppComponent {
 
-  data1 = ['apple', 'banana', 'cherry'];
-  data2 = ['grape', 'jackfruit', 'mango'];
+  todo = [
+    'Get to work',
+    'Pick up groceries',
+    'Go home',
+    'Fall asleep'
+  ];
 
-  addToData2(event: CdkDragDrop<string>) {
-    console.log(event);
-    this.data2.splice(event.currentIndex, 0, this.data1[event.previousIndex]).join();
-    //TODO add remove from old array function
+  done = [
+    'Get up',
+    'Brush teeth',
+    'Take a shower',
+    'Check e-mail',
+    'Walk dog'
+  ];
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
+
 }
