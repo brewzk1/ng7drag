@@ -1,13 +1,68 @@
-#container {
+#example {
+    width: 400px;
     display:flex;
     justify-content: space-between;
-    width:400px;
-    padding:10px;
+    padding: 0 20px;
     margin:0 auto;
     box-sizing: border-box;
-    border:10px solid #ddd;
+    border: 10px solid #ddd;
+}
+
+.col {
+    flex-direction: column; 
+    width:45%;
+    margin-bottom: 20px;
+}
+
+h4 {
+    flex-grow: 100%;
+}
+
+.droppable {
+    border:1px solid #ddd;
+    height: calc( 100% - 70px);
 }
 
 .draggable {
-    padding:5px;
+    padding:10px;
+    border-bottom:1px solid #ddd;
 }
+
+.draggable:hover {
+    cursor: pointer;
+    background:#ddd;
+}
+
+.draggable:last-child {
+    border-bottom:none;
+}
+
+.btn-row {
+    margin-top:20px;
+}
+
+.cdk-drag-preview {
+    background:#fff;
+    color:#999;
+    /* box-shadow: 0 5px 10px #ddd; */
+}
+
+.cdk-drag-placeholder {
+    background:#eee;
+    color:#bbb;
+    /* padding: 10px; */
+}
+
+.cdk-drop-list-receiving {
+    border-color: #bbb;
+}
+
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  /* Animate an item that has been dropped. */
+  .cdk-drag-animating {
+    transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+  }
